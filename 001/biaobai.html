@@ -38,9 +38,21 @@
             animation: mysecond 10s infinite;
         }
     </style>
+    <script>
+        function audioAutoPlay(id){
+            var audio = document.getElementById(id);
+            audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                audio.play();
+            },false);
+            document.addEventListener('YixinJSBridageReady', function () {
+                audio.play();
+            }, false);
+        }
+    </script>
 </head>
-<body>
-<audio src="./bgm/theshow.mp3" autoplay="autoplay" controls="controls">
+<body onload="audioAutoPlay('theshow1');">
+<audio id="theshow1" src="./bgm/theshow1.mp3" preload="auto" autoplay="autoplay" >
 </audio>
 <p id="cang">沧海笑</p>
 <p id="tao">滔滔两岸潮</p>
