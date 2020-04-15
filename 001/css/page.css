@@ -19,13 +19,26 @@ page{
     animation: x 10s infinite;
 }
 #q{
-    background-color: white;
+    background-image: url('../imgs/0.jpg');
+    background-size: 100% 100%;
     animation: q 10s infinite;
 }
 #d{
     background-color: black;
     color: white;
     animation: d 10s infinite;
+}
+#z{
+    font-size: 36px;
+    display:block;
+    animation: z 10s infinite;
+}
+@keyframes z{
+    0%{opacity: 0}
+    70%{opacity:0}
+    80%{opacity: 100}
+    90%{opacity:0}
+    100%{opacity:0}
 }
 @keyframes c{
     0%{opacity: 0}
