@@ -8,7 +8,11 @@
         var price = prompt("请输入价格");//declaration声明变量
         // price=39.9 assignment赋值
         var priceoff=prompt("请输入折扣(扣掉的比例)");//扣掉的比例
-
+            //function toPoint(percent){
+                var str=percent.replace("%","");
+                str=str/100;
+                return str;
+            }//
         //也可以直接声明赋值一起
         //可用用逗号隔开两个声明赋值，简化代码
         price=price*(1-priceoff);
