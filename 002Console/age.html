@@ -5,7 +5,21 @@
     <title>Title</title>
     <script>
         var age;
-        age = prompt()
+        age = prompt("请输入年龄");
+        if (isNaN("age")){
+            alert("请输入一个数字");
+        }
+        else {
+            if (age>=18){
+                if(age>200){
+                    alert("成精了");
+                }
+                else alert ("恭喜你，成年了");
+            }
+            else{
+                alert("还小呢");
+            }
+        }
     </script>
 </head>
 <body>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var price = 10, count;
+        count = prompt(price+"元一杯，您要多少杯？");
+        if (count%2 == 0){
+            totalPrice = count*price*0.75;
+        }
+        else {
+            totalPrice = count*price*0.75+price/4;
+        }
+        alert("您总共消费了"+totalPrice+"元");
+        //乘号会把符号左边的操作数自动转化为数值型
+    </script>
+</head>
+<body>
+
+</body>
+</html>
