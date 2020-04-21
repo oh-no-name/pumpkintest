@@ -3,21 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        body{
+            font-size: 50px;
+        }
+    </style>
     <script>
+        function isInteger(obj) {
+            return obj%1 === 0
+        }
         var price = 10, count; //单价和数量
         count = prompt(price+"元一杯，您要多少杯？");
         if(isNaN(count)){
-            alert("这根本不是数字，请输入数字！");
+            document.write("这根本不是数字，请输入数字！");
         }
         else{
-            if (count%2 == 0){
-                totalPrice = count*price*0.75;
+            if (isInteger(count)){
+                if (count%2 == 0){
+                    totalPrice = count*price*0.75;
+                }
+                else {
+                    totalPrice = count*price*0.75+price/4;
+                }
+                document.write("您总共消费了"+totalPrice+"元");
+                //乘号会把符号左边的操作数自动转化为数值型
             }
-            else {
-                totalPrice = count*price*0.75+price/4;
+            else{
+                document.write("请输入整数杯！");
+                //document.write是向网页输出的指令
             }
-            alert("您总共消费了"+totalPrice+"元");
-        //乘号会把符号左边的操作数自动转化为数值型
         }
     </script>
 </head>

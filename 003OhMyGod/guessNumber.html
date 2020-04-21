@@ -8,31 +8,39 @@
             font-size: 200px;
         }
     </style>
-    <script>
-        function guess(){
-            var a = Math.random();
-            a = Math.ceil(a * 6);
-            // document.write(a);
-            //document.write("<img src=\"imgs/"+a+".png\"/>");
-            // "\""也是转义字符，"本来是字符串结束标志，无法输出，现在通过\"就可以输出了
-            var guess = prompt("您猜骰子数是多少？");
-            if (guess == a){
-                document.write("您猜中了");
-            }
-            else if (guess > a){
-                document.write("您猜大了！");
-            }
-            else {
-                document.write("您猜小了！");
-            }
-        }
-        guess();
-        guess();
 
-
-    </script>
 </head>
 <body>
-
+<p id="demo"></p>
 </body>
+<!--在body前的代码出现警告的原因：body结构还未被解析，就被调用，容易引起混乱-->
 </html>
+<script>
+    var a = Math.random();
+    var bingo=false;
+    function guess(){
+        if (bingo){
+            return;
+        }
+        // document.write(a);
+        //document.write("<img src=\"imgs/"+a+".png\"/>");
+        // "\""也是转义字符，"本来是字符串结束标志，无法输出，现在通过\"就可以输出了
+        var guess = prompt("您猜骰子数是多少？");
+        if (guess == a){
+            document.write("您猜中了");
+            bingo = true;
+        }
+        else if (guess > a){
+            document.getElementById("demo").innerHTML="您猜大了！";
+
+        }
+        else {
+            document.getElementById("demo").innerHTML="您猜小了！";
+
+        }
+    }
+    a = Math.ceil(a * 6);
+    console.info(a);
+    guess();
+    guess();
+</script>
