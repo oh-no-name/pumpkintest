@@ -11,14 +11,15 @@
 
 </head>
 <body>
-<p id="demo"></p>
+<div id="message"></div>
 </body>
 <!--在body前的代码出现警告的原因：body结构还未被解析，就被调用，容易引起混乱-->
 </html>
 <script>
-    var a = Math.random();
+    var random = Math.random();
     var bingo=false;
     function guess(){
+        var str;
         if (bingo){
             return;
         }
@@ -26,21 +27,52 @@
         //document.write("<img src=\"imgs/"+a+".png\"/>");
         // "\""也是转义字符，"本来是字符串结束标志，无法输出，现在通过\"就可以输出了
         var guess = prompt("您猜骰子数是多少？");
-        if (guess == a){
-            document.write("您猜中了");
+        if(!Number.isInteger(guess/1)||guess>6||guess<1){
+            // ||表示或者,任其一；&&表示与，同时满足；！表示非
+            //叹号--表示逻辑，非运算；
+            // 除号/会让赋值语句两边都变成数值型
+            document.getElementById("message").innerHTML = "您的输入有误";
+            return;
+        }
+        console.info("random====" + random);
+        console.info("guess====" + guess);
+        var diff = Math.abs(random - guess);
+        console.info("diff====" + diff);
+
+        //string字符串，作为输出用
+
+        if (guess == random) {
+             str = "您猜中了！" + "<img src=\"imgs/" + random + ".png\"/>";
             bingo = true;
+        } else if (guess > random) {
+            if (diff > 1) {
+                str = "您猜得太大了！";
+            } else {
+                str = "您猜得有点儿大！";
+            }
+        } else {
+            if (diff > 1) {
+                str = "您猜得太小了！";
+            } else {
+                str = "您猜得有点儿小！";
+            }
         }
-        else if (guess > a){
-            document.getElementById("demo").innerHTML="您猜大了！";
-
-        }
-        else {
-            document.getElementById("demo").innerHTML="您猜小了！";
-
-        }
+        document.getElementById("message").innerHTML = str
+        // else if (guess > random&&diff>1){
+        //     document.getElementById("message").innerHTML="您猜得太大了！";
+        // }
+        // else if (guess > random&&diff<=1) {
+        //     document.getElementById("message").innerHTML = "您猜得有点儿大！";
+        // }
+        //     else if (guess < random&&diff>1){
+        //         document.getElementById("message").innerHTML="您猜得太小了！";
+        //     }
+        //     else if (guess < random&&diff<=1){
+        //         document.getElementById("message").innerHTML="您猜得有点儿小！";
+        // }
     }
-    a = Math.ceil(a * 6);
-    console.info(a);
+    random = Math.ceil(random * 6);
+    console.info(random);
     guess();
     guess();
 </script>
