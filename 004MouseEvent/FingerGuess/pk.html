@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #container {
+            width: 600px;
+            height: 300px;
+            border: darkblue solid 10px;
+            margin: 0 auto;
+        }
+
+        #container > div {
+            width: 300px;
+            height: 300px;
+            float: left;
+        }
+
+        #mine {
+            background-color: lavenderblush;
+        }
+
+        #computer {
+            background-color: lightblue;
+        }
+        #computerChoice>IMG{
+            transform:scaleX(-1);
+        }
+        h1{
+            margin-top:0;
+            text-align: center;
+        }
+        #container>#result{
+            font-size: 100px;
+            width:600px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body onload="go()">
+<div id="container">
+    <div id="mine">
+        <h1>我的出招</h1>
+        <div id="myChoice">
+            <img src="imgs/animation.gif"/>
+        </div>
+        <input type="button" value="石头" onclick="rock()"/>
+        <input type="button" value="剪刀" onclick="scissors()"/>
+        <input type="button" value="布" onclick="paper()"/>
+
+    </div>
+    <div id="computer">
+        <h1>电脑出招</h1>
+        <div id="computerChoice">
+            <img src="imgs/animation.gif"/>
+        </div>
+    </div>
+    <div id="result">You Win!
+    </div>
+</div>
+
+</body>
+<script>
+    var r;
+    function rock(){
+        document.getElementById("myChoice").innerHTML="<img src=\"imgs/rock.png\"/>"
+        var computerResult = computerChoice();
+        if(computerResult=="rock"){
+            document.getElementById("result").innerHTML="draw";
+        }
+        else if (computerResult=="scissors"){
+                document.getElementById("result").innerHTML="Win";
+            }
+        else if (computerResult=="paper"){
+                document.getElementById("result").innerHTML="Lose";
+            }
+
+    }
+    function scissors(){
+        document.getElementById("myChoice").innerHTML="<img src=\"imgs/scissors.png\"/>"
+        computerChoice();
+    }
+    function paper(){
+        document.getElementById("myChoice").innerHTML="<img src=\"imgs/paper.png\"/>"
+        computerChoice();
+    }
+    function go(){
+        r = 3*Math.random();
+    }
+    function computerChoice(){
+        if(r<1){
+            document.getElementById("computerChoice").innerHTML="<img src='imgs/rock.png'/>";
+            return "rock";
+        }
+        else if(r>2){
+            document.getElementById("computerChoice").innerHTML="<img src='imgs/scissors.png'/>";
+            return "scissors";
+        }
+        else{
+            document.getElementById("computerChoice").innerHTML="<img src='imgs/paper.png'/>";
+            return "paper";
+        }
+    }
+</script>
+</html>

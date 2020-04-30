@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="go()">
+
+</body>
+<script>
+    function go(){
+        var r = 3*Math.random();
+        document.body.innerHTML="r";
+        document.body.innerHTML=r;
+        if(r<1){
+            document.body.innerHTML="<img src='imgs/rock.png'>";
+        }
+        else if(r>2){
+            document.body.innerHTML="<img src='imgs/scissors.png'>";
+        }
+        else{
+            document.body.innerHTML="<img src='imgs/paper.png'>";
+        }
+    }
+
+</script>
+</html>
