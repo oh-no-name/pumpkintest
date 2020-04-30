@@ -67,25 +67,54 @@
     function rock(){
         document.getElementById("myChoice").innerHTML="<img src=\"imgs/rock.png\"/>"
         var computerResult = computerChoice();
-        if(computerResult=="rock"){
-            document.getElementById("result").innerHTML="draw";
-        }
-        else if (computerResult=="scissors"){
-                document.getElementById("result").innerHTML="Win";
-            }
-        else if (computerResult=="paper"){
-                document.getElementById("result").innerHTML="Lose";
-            }
-
+        judge("rock",computerResult);
     }
     function scissors(){
         document.getElementById("myChoice").innerHTML="<img src=\"imgs/scissors.png\"/>"
-        computerChoice();
+        var computerResult = computerChoice();
+        judge("scissors",computerResult);
     }
     function paper(){
         document.getElementById("myChoice").innerHTML="<img src=\"imgs/paper.png\"/>"
-        computerChoice();
+        var computerResult = computerChoice();
+        judge("paper",computerResult);
     }
+    function judge(myChoice,computerResult) {
+        if (myChoice=="rock"){
+            if(computerResult=="rock"){
+                document.getElementById("result").innerHTML="Draw";
+            }
+            else if (computerResult=="scissors"){
+                document.getElementById("result").innerHTML="Win";
+            }
+            else if (computerResult=="paper"){
+                document.getElementById("result").innerHTML="Lose";
+            }
+        }
+        else if(myChoice=="scissors"){
+            if(computerResult=="rock"){
+                document.getElementById("result").innerHTML="Lose";
+            }
+            else if (computerResult=="scissors"){
+                document.getElementById("result").innerHTML="Draw";
+            }
+            else if (computerResult=="paper"){
+                document.getElementById("result").innerHTML="Win";
+            }
+        }
+        else if(myChoice=="paper"){
+            if(computerResult=="rock"){
+                document.getElementById("result").innerHTML="Win";
+            }
+            else if (computerResult=="scissors"){
+                document.getElementById("result").innerHTML="Lose";
+            }
+            else if (computerResult=="paper"){
+                document.getElementById("result").innerHTML="Draw";
+            }
+        }
+    }
+    
     function go(){
         r = 3*Math.random();
     }
