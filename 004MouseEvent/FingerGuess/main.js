@@ -27,8 +27,6 @@ function paper() {
     judge("paper");
     lastHumanChoice = "paper";
 
-
-
 }
 
 function judge(myChoice) {
@@ -36,55 +34,43 @@ function judge(myChoice) {
     var computerResult;
     if (grade == 1) {
         computerResult = onlyRocker();
-    }
-    else if (grade == 2) {
+    } else if (grade == 2) {
         computerResult = learnFromHuman();
-    }
-    else if(grade==3){
+    } else if (grade == 3) {
         computerResult = winnerAgain();
         lastComputerChoice = computerResult;
-    }
-    else if (grade ==4){
+    } else if (grade == 4) {
         computerResult = loseChange();
         lastComputerChoice = computerResult;
-    }
-    else if (grade ==5) {
+    } else if (grade == 5) {
         computerResult = lovePaper();
-    }
-    else if (grade ==6){
+    } else if (grade == 6) {
         computerResult = randomPlayer();
-    }
-    else if(grade ==7){
+    } else if (grade == 7) {
         computerResult = cheatingMan(humanChoice);
     }
-}
+
     if (myChoice == "rock") {
         if (computerResult == "rock") {
             lastWinner = "noone";
-        }
-        else if (computerResult == "scissors") {
+        } else if (computerResult == "scissors") {
             lastWinner = "human";
             score += 1;
-        }
-        else if (computerResult == "paper") {
+        } else if (computerResult == "paper") {
             lastWinner = "com";
             score -= 1;
         }
-    }
-    else if (myChoice == "scissors") {
+    } else if (myChoice == "scissors") {
         if (computerResult == "rock") {
             lastWinner = "com";
             score -= 1;
-        }
-        else if (computerResult == "scissors") {
+        } else if (computerResult == "scissors") {
             lastWinner = "noone";
-        }
-        else if (computerResult == "paper") {
+        } else if (computerResult == "paper") {
             lastWinner = "human";
             score += 1;
         }
-    }
-    else if (myChoice == "paper") {
+    } else if (myChoice == "paper") {
         if (computerResult == "rock") {
             lastWinner = "human";
             score += 1;
@@ -103,6 +89,7 @@ function judge(myChoice) {
     if (grade >= 8) {
         document.getElementById("result").innerHTML = "厉害了哟，通关了！" + score;
     }
+}
 
 
 function go() {
