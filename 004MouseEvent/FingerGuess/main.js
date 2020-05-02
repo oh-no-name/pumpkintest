@@ -1,25 +1,33 @@
-var r, score = 0, grade = 4, lastHumanChoice;
+var r, score = 0, grade = 1, lastHumanChoice, humanChoice;
 var lastWinner="noone",lastComputerChoice="rock";
 function rock() {
 
     document.getElementById("myChoice").innerHTML = "<img src=\"imgs/rock.png\"/>"
+    humanChoice= "rock"
     judge("rock");
     lastHumanChoice = "rock";
+
+
 }
 
 function scissors() {
 
     document.getElementById("myChoice").innerHTML = "<img src=\"imgs/scissors.png\"/>"
+    humanChoice= "scissors"
     judge("scissors");
     lastHumanChoice = "scissors";
+
 
 }
 
 function paper() {
 
     document.getElementById("myChoice").innerHTML = "<img src=\"imgs/paper.png\"/>"
+    humanChoice= "paper"
     judge("paper");
     lastHumanChoice = "paper";
+
+
 
 }
 
@@ -40,12 +48,16 @@ function judge(myChoice) {
         computerResult = loseChange();
         lastComputerChoice = computerResult;
     }
-    else if (grade ==4){
+    else if (grade ==5) {
         computerResult = lovePaper();
     }
-    else {
-        computerResult = computerChoice();
+    else if (grade ==6){
+        computerResult = randomPlayer();
     }
+    else if(grade ==7){
+        computerResult = cheatingMan(humanChoice);
+    }
+}
     if (myChoice == "rock") {
         if (computerResult == "rock") {
             lastWinner = "noone";
@@ -88,10 +100,10 @@ function judge(myChoice) {
         grade += 1;
     }
     document.getElementById("result").innerHTML = "第" + grade + "关<br>积分：" + score;
-    if (grade >= 5) {
+    if (grade >= 8) {
         document.getElementById("result").innerHTML = "厉害了哟，通关了！" + score;
     }
-}
+
 
 function go() {
 }
@@ -182,5 +194,40 @@ function getResultExclude(exclusion){
     }
     else{
         return temp;
+    }
+}
+
+function cheatingMan(humanChoice){
+    document.getElementById("computerName").innerHTML = "作弊爷爷";
+    if(humanChoice=="rock"){
+        r=Math.random();
+        if(r<0.5){
+            document.getElementById("computerChoice").innerHTML = "<img src='imgs/paper.png'/>";
+            return "paper";
+        }
+        else{
+            return computerChoice();
+        }
+
+    }
+    else if(humanChoice=="scissors"){
+        r=Math.random();
+        if(r<0.5){
+        document.getElementById("computerChoice").innerHTML = "<img src='imgs/rock.png'/>";
+        return "rock";
+        }
+        else{
+            return computerChoice();
+        }
+    }
+    else{
+        r=Math.random();
+        if(r<0.5){
+        document.getElementById("computerChoice").innerHTML = "<img src='imgs/scissors.png'/>";
+        return "scissors";
+        }
+        else{
+            return computerChoice();
+        }
     }
 }
